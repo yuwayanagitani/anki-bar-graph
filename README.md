@@ -36,8 +36,9 @@ This add-on is designed to give you an immediate visual overview of your recent 
 
 1. Open Anki
 2. Go to **Tools → Add-ons → Get Add-ons**
-3. Enter the add-on code (from AnkiWeb)
+3. Enter the add-on code (from AnkiWeb )
 4. Restart Anki
+- Add-on page: https://ankiweb.net/shared/info/1487842475
 
 ### Option 2: Manual installation
 
