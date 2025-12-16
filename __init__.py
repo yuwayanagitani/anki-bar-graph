@@ -571,9 +571,14 @@ class ConfigDialog(QDialog):
         self.range_combo.addItem("6 months (180 days)", 180)
         self.range_combo.addItem("1 year (365 days)", 365)
 
+        allowed = {7, 30, 90, 180, 365}
         cur_days = int(self._conf.get("range_days", 30) or 30)
+        if cur_days not in allowed:
+            cur_days = 30
+            self._conf["range_days"] = 30
+
         i = self.range_combo.findData(cur_days)
-        self.range_combo.setCurrentIndex(i if i >= 0 else 1)  # default 30
+        self.range_combo.setCurrentIndex(i if i >= 0 else 1)
 
         form_g.addRow("Range", self.range_combo)
 
@@ -716,7 +721,13 @@ class ConfigDialog(QDialog):
         self.enabled_cb.setChecked(bool(d["enabled"]))
         self.goal_spin.setValue(int(d["goal_per_day"]))
         self.goal_line_cb.setChecked(bool(d["show_goal_line"]))
-        self.range_combo.setCurrentIndex(self.range_combo.findData(int(d.get("range_days", 30))))
+        allowed = {7, 30, 90, 180, 365}
+        range_days = int(d.get("range_days", 30) or 30)
+        if range_days not in allowed:
+            range_days = 30
+
+        idx = self.range_combo.findData(range_days)
+        self.range_combo.setCurrentIndex(idx if idx >= 0 else 1)
 
         self.height_spin.setValue(int(d["chart_height_px"]))
         self.width_vw_spin.setValue(int(d["chart_width_vw"]))
