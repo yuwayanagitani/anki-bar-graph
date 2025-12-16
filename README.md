@@ -1,98 +1,156 @@
-# Anki Bar Graph
-
-A lightweight Anki add-on that displays a **30-day review history bar graph** directly on the **Decks screen**.
-
-This add-on is designed to give you an immediate visual overview of your recent study activity, without opening the Statistics window.
-
----
-
-## Screenshot
-
 ![Decks screen – last 30 days bar graph](screenshots/screenshot-1.png)
 
 ---
 
-## Features
+# Anki Bar Graph
+*(Last 30 Days Review Bar Graph for Decks screen)*
 
-* 📊 Shows **review counts for the last 30 days** on the Decks screen
-* ⚡ **Very lightweight**: minimal queries, cached results
-* 🔄 Updates automatically after review sessions
-* 🎯 Optional **daily goal line** with visual feedback
-* 🎨 Clear color coding:
-
-  * Past days: blue tones
-  * Goal achieved: stronger blue
-  * Today: red tone
-  * Today + goal achieved: emphasized red
-* 🖱️ Hover to display exact review counts
-* 📐 Responsive layout (window-width based)
-* 🧩 Built-in **custom settings GUI** (no extra Tools menu entries)
+🔗 **AnkiWeb**  
+https://ankiweb.net/shared/info/1487842475
 
 ---
 
-## Installation
+## What this add-on does
 
-### Option 1: AnkiWeb (recommended)
+**Anki Bar Graph** displays your **recent review activity as a bar graph directly on the Decks screen**.
 
-1. Open Anki
-2. Go to **Tools → Add-ons → Get Add-ons**
-3. Enter the add-on code (from AnkiWeb )
-4. Restart Anki
-- Add-on page: https://ankiweb.net/shared/info/1487842475
+- No Statistics window
+- Always visible
+- Immediate feedback when you open Anki
 
-### Option 2: Manual installation
-
-1. Download the add-on files
-2. Place them in:
-
-   ```
-   Anki2/<profile>/addons21/bar_graph/
-   ```
-3. Restart Anki
+By default, it shows your **recent review history**, helping you keep track of study momentum at a glance.
 
 ---
 
-## Usage
+## Core Features
 
-* The graph appears automatically on the **Decks screen**.
-* No action is required during normal use.
-* Data is refreshed after review sessions.
+- 📊 Bar graph shown **directly on the Decks screen**
+- 📅 Displays review counts for a configurable recent period
+- 🔄 Automatically updates after review sessions
+- 🎯 Optional **daily goal line**
+- 🖱 Hover to see exact review counts per day
+- 🪶 Lightweight and fast (cached DB access)
+
+---
+
+## 🆕 Recent Updates (Latest Features)
+
+### 📆 Configurable date range
+
+You can now choose how many days to display:
+
+- 7 days  
+- 30 days  
+- 90 days  
+- 180 days  
+- 365 days  
+
+This supports both **short-term habit tracking** and **long-term trend analysis**.
+
+---
+
+### 🎨 Full color customization (GUI color picker)
+
+All colors can be configured via a **color picker UI** (no manual RGBA editing).
+
+Customizable elements include:
+
+- Past days bars  
+- Today’s bar  
+- Goal-achieved bars  
+- Goal line  
+- Background / border colors  
+
+---
+
+### 🧩 Unified color setting components
+
+All color options use a shared internal **RGBA picker row**, providing:
+
+- Consistent UI behavior
+- Easier maintenance
+- Predictable previews across settings
+
+---
+
+### 🖱 Improved scroll behavior (UX fix)
+
+Mouse wheel / trackpad scrolling is **disabled on numeric and combo inputs** to prevent:
+
+- Accidental value changes while scrolling
+- Unintended edits in the settings dialog
+
+Applies to:
+- Spin boxes
+- Combo boxes
+
+---
+
+### ⚡ Safer configuration handling
+
+- Invalid values (e.g. unsupported range days) are auto-corrected
+- Unknown config keys are preserved during updates
+- **Reset to defaults** reliably restores the original state
 
 ---
 
 ## Configuration
 
-All settings are available via:
+Open:
 
-**Tools → Add-ons → Bar Graph (Last 30 Days) → Config**
+**Tools → Add-ons → Bar Graph → Config**
 
-You can configure:
+Available options include:
 
-* Enable / disable the graph
-* Daily review goal
-* Chart size and layout
-* Bar spacing and width limits
-* Full color customization (RGBA)
+- Enable / disable graph
+- Display range (7–365 days)
+- Daily review goal
+- Bar width and spacing
+- Chart height
+- Full RGBA color customization (GUI)
 
-For detailed explanations, see **`config.md`**.
+For detailed descriptions, see `config.md`.
 
 ---
 
-## Compatibility
+## Installation
 
-* Anki 24.x
-* Anki 25.x
-* Windows / macOS / Linux
+### From AnkiWeb (recommended)
+
+1. Open Anki  
+2. Tools → Add-ons → Get Add-ons  
+3. Enter the code from AnkiWeb  
+4. Restart Anki  
+
+👉 https://ankiweb.net/shared/info/1487842475
+
+---
+
+### Manual (GitHub)
+
+1. Download or clone this repository  
+2. Place it in:
+
+   `Anki2/<profile>/addons21/anki-bar-graph/`
+
+3. Restart Anki
 
 ---
 
 ## Performance Notes
 
-* Only the last 30 days of review data are queried
-* Results are cached to avoid repeated database access
-* No background timers or polling
+- Queries only the selected recent range (max 365 days)
+- Results are cached
+- No background timers or polling
+- Negligible impact even on large collections
 
-This ensures negligible performance impact even on large collections.
+---
+
+## Compatibility
+
+- Anki 24.x
+- Anki 25.x
+- Windows / macOS / Linux
 
 ---
 
@@ -104,11 +162,12 @@ MIT License
 
 ## Author
 
-Created by @yuwayanagitani
+Created by **@yuwayanagitani**
 
 ---
 
 ## Notes
 
-* If `config.json` is deleted, it will be automatically recreated with default values.
-* The add-on does not modify cards, decks, or scheduling behavior.
+- This add-on **does not modify cards, decks, or scheduling**
+- The graph is shown **only on the Decks screen**
+- Deleting `config.json` will recreate it with default values
